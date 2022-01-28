@@ -93,12 +93,4 @@ def best_practice(app_configs, **kwargs):
                   hint=[a for a in settings.SHARED_APPS if a in delta],
                   id="tenant_schemas.E003"))
 
-    if not isinstance(default_storage, TenantStorageMixin):
-        errors.append(Warning(
-            "Your default storage engine is not tenant aware.",
-            hint="Set settings.DEFAULT_FILE_STORAGE to "
-                 "'tenant_schemas.storage.TenantFileSystemStorage'",
-            id="tenant_schemas.W003"
-        ))
-
     return errors
